@@ -3,8 +3,10 @@ import os
 import re
 import requests
 from urllib.parse import urlparse, parse_qs
-from datetime import datetime
+from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
+
+KST = ZoneInfo("Asia/Seoul")
 
 
 # ==========================================
@@ -232,6 +234,7 @@ def update_notion_views(page_id, view_count):
     response.raise_for_status()
 
 
+
 # ==========================================
 # 7. 전체 갱신 실행
 # ==========================================
@@ -239,6 +242,10 @@ def update_notion_views(page_id, view_count):
 def run_update():
 
     print("\n" + "=" * 45)
+    print("UTC 현재 시각:", datetime.now(timezone.utc))
+    print("KST 현재 시각:", datetime.now(KST))
+    print("=" * 45)
+
     print(
         f"갱신 시작: "
         f"{datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S')}"
