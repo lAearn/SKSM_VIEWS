@@ -3,7 +3,8 @@ name: YouTube Views Update
 
 on:
   schedule:
-    - cron: '0 21,9 * * *'
+    - cron: '17 21,9 * * *'
+      timezone: 'Asia/Seoul'
   workflow_dispatch:
 
 jobs:
